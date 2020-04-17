@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Blog.Models.Category>
+<h2>Kategorie</h2>
+<div class="container">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Name</li>
+        }
+
+
+    </ul>
+</div>
