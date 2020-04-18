@@ -1,24 +1,25 @@
-﻿
+﻿@model IEnumerable<Article>
 
 <div>
     <span class="title">Blog Filmowy</span>
 </div>
 
-@Html.Partial("_Categories")
 
-
-
-
-@*@<div class="container">
-        <ul>
-            @foreach (var post in Model)
-            {
-                <li>
-                    @post.Title
-                </li>
-                <li>
-                    @post.Body
-                </li>
-            }
-        </ul>
-    </div>*@
+@*@<div>
+    <ul>
+        @foreach (var post in Model)
+        {
+        <li>
+            <a asp-controller="Home" asp-action="Article" asp-route-id="@post.ID">
+                @post.Title
+            </a>
+            <a asp-controller="Home" asp-action="Edit" asp-route-id="@post.ID">
+                Edit
+            </a>
+            <a asp-controller="Home" asp-action="Remove" asp-route-id="@post.ID">
+                Remove
+            </a>
+        </li>                
+        }
+    </ul>
+*@</div>

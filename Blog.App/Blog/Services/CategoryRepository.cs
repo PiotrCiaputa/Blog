@@ -26,7 +26,7 @@ namespace Blog.Services
 
         public Category GetCategory(int id)
         {
-            return _context.Categories.Single(x => x.ID == id);
+            return _context.Categories.FirstOrDefault(x => x.ID == id);
         }
 
         public void UpdateCategory(Category category)

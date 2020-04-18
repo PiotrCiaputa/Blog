@@ -23,7 +23,7 @@ namespace Blog.Services
 
         public Article GetArticle(int id)
         {
-            return _context.Articles.Single(x => x.ID == id);
+            return _context.Articles.FirstOrDefault(x => x.ID == id);
         }
 
         public void UpdateArticle(Article article)
