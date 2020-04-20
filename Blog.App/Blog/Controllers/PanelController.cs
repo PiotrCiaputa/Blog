@@ -30,7 +30,7 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
-            var articles = _articleRepository.GetAllArticles().ToList();
+            var articles = _articleRepository.GetAllArticles();
             return View(articles);
         }        
 
@@ -71,13 +71,66 @@ namespace Blog.Controllers
             }
 
             return View(article);            
-        }
+        }       
 
         public async Task<IActionResult> Remove(int id)
-        {
+        {           
             _articleRepository.RemoveArticle(id);
             await _articleRepository.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // Lista kategorii
+        public IActionResult List()
+        {
+            var categories = _categoryRepository.GetAllCategories();
+            return View(categories);
+        }
+
+        [HttpGet]
+        public IActionResult AddCategory()
+        {
+            var category = new Category();
+            return View(category);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _categoryRepository.AddCategory(category);
+                await _categoryRepository.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
+
+            return View(category);
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int id)
+        {          
+            var category = _categoryRepository.GetCategory(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);
+        }
+
+        public async Task<IActionResult> Edit(int id, Category category)
+        {
+            if(id != category.ID)
+            {
+                return NotFound();
+            }
+
+            _categoryRepository.UpdateCategory(category);
+            await _categoryRepository.SaveChangesAsync();
+
+            return RedirectToAction("List");
         }
     }
 }

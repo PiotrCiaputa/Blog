@@ -21,13 +21,13 @@ namespace Blog.Services
 
         public List<Category> GetAllCategories()
         {
-            return _context.Categories.ToList();
+            return _context.Categories.OrderBy(x => x.Name).ToList();
         }
 
         public Category GetCategory(int id)
         {
             return _context.Categories.FirstOrDefault(x => x.ID == id);
-        }
+        }        
 
         public void UpdateCategory(Category category)
         {
@@ -47,6 +47,8 @@ namespace Blog.Services
             }
 
             return false;
-        }        
+        }
+
+        
     }
 }

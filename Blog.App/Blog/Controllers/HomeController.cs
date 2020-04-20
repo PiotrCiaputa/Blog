@@ -26,8 +26,8 @@ namespace Blog.Controllers
         }
         public IActionResult Index()
         {
-            //var articles = _articleRepository.GetAllArticles();
-            return View();
+            var articles = _articleRepository.GetAllArticles();
+            return View(articles);
         }
 
         public IActionResult Article(int id)

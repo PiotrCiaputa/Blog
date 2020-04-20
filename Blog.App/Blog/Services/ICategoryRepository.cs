@@ -10,7 +10,7 @@ namespace Blog.Services
     {
         List<Category> GetAllCategories();
         void AddCategory(Category category);
-        Category GetCategory(int id);         
+        Category GetCategory(int id);        
         void UpdateCategory(Category category);
         void RemoveCategory(int id);        
 
