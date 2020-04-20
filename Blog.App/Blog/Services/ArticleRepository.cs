@@ -10,7 +10,12 @@ namespace Blog.Services
 {
     public class ArticleRepository : IArticleRepository
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
+
+        public ArticleRepository(AppDbContext context)
+        {
+            _context = context;
+        }
         public void AddArticle(Article article)
         {
             _context.Articles.Add(article);

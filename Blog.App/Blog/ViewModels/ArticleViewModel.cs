@@ -15,9 +15,10 @@ namespace Blog.ViewModels
         public string Body { get; set; }        
         public string Description { get; set; }
         public string Tags { get; set; }
-        public IFormFile Image { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
 
         public int CategoryID { get; set; }
-        public List<SelectListItem> Categories { get; set; }
+        public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
+        public IFormFile Image { get; set; } = null;
     }
 }

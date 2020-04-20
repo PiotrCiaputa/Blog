@@ -6,22 +6,16 @@
 
 <h2>@Model.Title</h2>
 
+@if (!String.IsNullOrEmpty(Model.Image))
+{
+    var imagePath = $"/Image/{Model.Image}";
+    <img src="@imagePath" />
+}
+
 <p>@Model.Body</p>
 
 
 
 
 
-@*@<div class="container">
-        <ul>
-            @foreach (var post in Model)
-            {
-                <li>
-                    @post.Title
-                </li>
-                <li>
-                    @post.Body
-                </li>
-            }
-        </ul>
-    </div>*@
+

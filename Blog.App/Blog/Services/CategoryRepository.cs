@@ -9,7 +9,7 @@ namespace Blog.Services
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public CategoryRepository(AppDbContext context)
         {
             _context = context;

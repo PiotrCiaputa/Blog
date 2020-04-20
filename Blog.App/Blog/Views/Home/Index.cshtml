@@ -1,25 +1,31 @@
-﻿@model IEnumerable<Article>
+﻿@model ArticleViewModel
 
 <div>
     <span class="title">Blog Filmowy</span>
 </div>
 
 
-@*@<div>
-    <ul>
-        @foreach (var post in Model)
-        {
-        <li>
-            <a asp-controller="Home" asp-action="Article" asp-route-id="@post.ID">
+<img src="~/content/static/myke-simon-atsUqIm3wxo-unsplash.jpg" width="300" />
+
+<div class="container">
+    @*@<ul>
+            @foreach (var post in Model)
+            {
+            <li>
+                <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+                    @post.Title
+                </a>
+            </li>
+            }
+        </ul>
+    @foreach (var post in Model)
+    {
+        var image_path = $"/Image/{post.Image}";
+        <a class="post" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+            <img src="@image_path" />
+            <span class="title">
                 @post.Title
-            </a>
-            <a asp-controller="Home" asp-action="Edit" asp-route-id="@post.ID">
-                Edit
-            </a>
-            <a asp-controller="Home" asp-action="Remove" asp-route-id="@post.ID">
-                Remove
-            </a>
-        </li>                
-        }
-    </ul>
-*@</div>
+            </span>
+        </a>
+    }*@
+</div>
