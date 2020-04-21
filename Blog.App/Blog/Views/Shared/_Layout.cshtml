@@ -6,24 +6,34 @@
     <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
+    <! -- Navbar -- >
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <div class="navbar-nav">
+                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
+                    <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Wyloguj się</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login" class="nav-item nav-link">Zaloguj się</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
     <div>
-        <a asp-controller="Home" asp-action="Index">Home</a>        
-        <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
-
-        @if (User.Identity.IsAuthenticated)
-        {
-            <a asp-controller="Account" asp-action="Logout">Wyloguj się</a>
-        }
-        else
-        {
-            <a asp-controller="Account" asp-action="Login">Zaloguj się</a>
-        }
-    </div>    
-    <div>        
         @RenderBody()
-    </div>  
-    
+    </div>
+
 </body>
 </html>

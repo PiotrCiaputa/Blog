@@ -1,0 +1,85 @@
+﻿/** Global style **/
+body {
+    margin: 0;
+    background-color: #c7c7c7;
+}
+
+p {
+    font-size: .9rem;
+    line-height: 1.75rem;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+.btn {
+    padding: .5rem 1.25rem;
+}
+
+/** Navbar **/
+.navbar .navbar-nav .nav-item {
+    padding: 0.5rem 1.5rem;
+    color: white;
+}
+
+/** Top **/
+.top {
+    padding: 140px 0 150px;
+    height: 500px;
+    background-image: url('../content/static/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.top-header {
+    margin-bottom: .5rem;
+    font-size: 6.25rem;
+    color: #fff400;    
+}
+
+.top-subheader {
+    font-size: 1.8rem;
+    color: #eb1717;    
+}
+
+/** Content **/
+.content {
+    padding: 50px 0 60px;
+}
+
+.content-item {
+    padding: 0 2rem;
+}
+
+.article {
+    position: relative;
+    display: flex;
+    
+}
+
+.title
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align:center;
+}
+
+.title-date {
+    font-size: .8rem;
+    color: red;
+}
+
+.article img {
+    display: flex;
+    width: 100%;
+}
+
+

@@ -16,6 +16,7 @@ namespace Blog.Controllers
         private readonly IArticleRepository _articleRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IFileManager _fileManager;
+        
         public HomeController(IArticleRepository articleRepository,
                               ICategoryRepository categoryRepository,
                               IFileManager fileManager)
@@ -26,8 +27,14 @@ namespace Blog.Controllers
         }
         public IActionResult Index()
         {
-            var articles = _articleRepository.GetAllArticles();
-            return View(articles);
+            List<HomeViewModel> model = new List<HomeViewModel>();
+            model.Add(new HomeViewModel
+            {
+                Articles = _articleRepository.GetAllArticles(),
+                Categories = _categoryRepository.GetAllCategories()
+            });
+
+            return View(model);
         }
 
         public IActionResult Article(int id)

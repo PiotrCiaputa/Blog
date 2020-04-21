@@ -1,30 +1,62 @@
-﻿@model IEnumerable<Article>
+﻿@model IEnumerable<HomeViewModel>
 
-<div>
-    <span class="title">Blog Filmowy</span>
+@{
+
+}
+
+<! -- Top -->
+<div class="jumbotron jumbotron-fluid text-white text-center top">
+    <div class="container">        
+        <h1 class="text-uppercase top-header">Blog</h1>
+        <span class="top-subheader">Filmy i seriale</span>
+    </div>
 </div>
 
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var article in Model)
+            {
+            <div class="col-lg-3 col-md-3">
+                    <div class="content-item text-center">
+                        <h3>KATEGORIE</h3>
+                        @foreach (var cat in article.Categories)
+                        {
+                            <div>
+                                <a asp-controller="Home" asp-action="Article">
+                                    <p>@cat.Name</p>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            <div class="col-lg-6 col-md-6">
 
-<img src="~/content/static/myke-simon-atsUqIm3wxo-unsplash.jpg" width="300" />
-
-<div>
-    <ul>
-        @foreach (var article in Model)
-        {
-            <li>
-                <a asp-controller="Home" asp-action="Article" asp-route-id="@article.ID"></a>
-                @article.Title
-            </li>
-            <li>
-                @if (!String.IsNullOrEmpty(article.Image))
+                @foreach (var item in article.Articles)
                 {
-                    var imagePath = $"/Image/{article.Image}";
-                    <img src="@imagePath" width="500" />
+                    <div class="content-item">
+                        <a class="article" asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <span class="title">@item.Title</span>
+                        </a>
+
+                    </div>
+                    <div>
+                        @if (!String.IsNullOrEmpty(item.Image))
+                        {
+                            var imagePath = $"/Image/{item.Image}";
+                            <img src="@imagePath" width="500" />
+                        }
+                    </div>
+                    <span class="title-date">Dodano: @item.Created</span>
+                    <div>
+                        @item.Body
+                    </div>
                 }
-            </li>           
-            <li>
-                @article.Body
-            </li>
-        }
-    </ul>
-</div>
+            </div>
+                <div class="col-lg-3 col-md-3">
+
+                </div>
+                }
+            </div>
+    </div>
+</section>
