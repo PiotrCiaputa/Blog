@@ -5,21 +5,37 @@
 }
 
 <! -- Top -->
-<div class="jumbotron jumbotron-fluid text-white text-center top">
+<div class="jumbotron text-white text-center top">
     <div class="container">        
-        <h1 class="text-uppercase top-header">Blog</h1>
-        <span class="top-subheader">Filmy i seriale</span>
+        <h1 class="text-uppercase top-header">Odkryj <span class="text-warning">niesamowitą stronę</span> o kinie</h1>
+        <h5 class="text-white">Najlepszy blog o filmach i serialach</h5>
     </div>
 </div>
 
-<section class="content">
+<section class="introduction">
     <div class="container-fluid">
         <div class="row">
             @foreach (var article in Model)
             {
-            <div class="col-lg-3 col-md-3">
-                    <div class="content-item text-center">
-                        <h3>KATEGORIE</h3>
+                <div class="col-lg-9 col-md-9">                    
+                    <div class="introduction-item text-center">
+                        
+                        @foreach (var item in article.Articles.OrderByDescending(x => x.Created))
+                        {
+                            var imagePath = $"/Image/{item.Image}";
+                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <h3 class="title">@item.Title</h3>
+                            <span class="date-added">Dodano: @item.Created</span>
+                            <img src="@imagePath" alt="image" class="img-fluid img" />
+                        </a>
+                            
+                        }
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <div class="introduction-item text-center">
+                        <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
                         @foreach (var cat in article.Categories)
                         {
                             <div>
@@ -29,34 +45,18 @@
                             </div>
                         }
                     </div>
-                </div>
-            <div class="col-lg-6 col-md-6">
-
-                @foreach (var item in article.Articles)
-                {
-                    <div class="content-item">
-                        <a class="article" asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                            <span class="title">@item.Title</span>
-                        </a>
-
-                    </div>
-                    <div>
-                        @if (!String.IsNullOrEmpty(item.Image))
+                    <div class="introduction-item text-center">
+                        <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
+                        @foreach (var item in article.Articles.OrderByDescending(x => x.Created).Take(5))
                         {
-                            var imagePath = $"/Image/{item.Image}";
-                            <img src="@imagePath" width="500" />
+                            <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <p>@item.Title</p>
+                            
+                            </a>
                         }
                     </div>
-                    <span class="title-date">Dodano: @item.Created</span>
-                    <div>
-                        @item.Body
-                    </div>
-                }
-            </div>
-                <div class="col-lg-3 col-md-3">
-
                 </div>
-                }
-            </div>
+            }
+        </div>
     </div>
 </section>

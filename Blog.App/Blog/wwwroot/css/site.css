@@ -1,12 +1,7 @@
-﻿/** Global style **/
+﻿/** Global style *//
 body {
     margin: 0;
-    background-color: #c7c7c7;
-}
-
-p {
-    font-size: .9rem;
-    line-height: 1.75rem;
+    background-color: yellow;
 }
 
 a {
@@ -19,67 +14,63 @@ a:hover {
     text-decoration: none;
 }
 
-.btn {
-    padding: .5rem 1.25rem;
+.date-added {
+    font-size: .8rem;
+    color: gray;      
 }
+
 
 /** Navbar **/
 .navbar .navbar-nav .nav-item {
-    padding: 0.5rem 1.5rem;
+    padding: 0 1.5rem;
     color: white;
 }
 
 /** Top **/
 .top {
-    padding: 140px 0 150px;
-    height: 500px;
+    padding: 150px 0 175px;   
     background-image: url('../content/static/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg');
-    background-position: center;
+    background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .top-header {
-    margin-bottom: .5rem;
-    font-size: 6.25rem;
-    color: #fff400;    
+    margin-bottom: 1.25rem;
+    font-size: 2.75rem;   
 }
 
-.top-subheader {
+.top-text {
     font-size: 1.8rem;
-    color: #eb1717;    
 }
 
 /** Content **/
-.content {
-    padding: 50px 0 60px;
+.introduction {
+    padding: 50px 0 60px;    
 }
 
-.content-item {
-    padding: 0 2rem;
+.introduction-header {
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.article {
-    position: relative;
-    display: flex;
-    
+.introduction-item {
+   margin-bottom: 2rem;
 }
 
 .title
 {
     font-size: 1.2rem;
     font-weight: bold;
+    padding-top: 2rem;   
     text-align:center;
 }
 
-.title-date {
-    font-size: .8rem;
-    color: red;
-}
-
-.article img {
-    display: flex;
-    width: 100%;
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
 
