@@ -22,31 +22,37 @@ namespace Blog.Controllers
         }
         public IActionResult Index(int category)
         {
-            List<HomeViewModel> model = new List<HomeViewModel>();
-            if (category == 0)
+            HomeViewModel model;
+            if(category == 0)
             {
-                model.Add(new HomeViewModel
+                model = new HomeViewModel()
                 {
                     Articles = _articleRepository.GetAllArticles(),
                     Categories = _categoryRepository.GetAllCategories()
-                });
+                };
             }
             else
             {
-                model.Add(new HomeViewModel
+                model = new HomeViewModel()
                 {
                     Articles = _articleRepository.GetAllArticles(category),
                     Categories = _categoryRepository.GetAllCategories()
-                });
-            }
-
+                };
+            }           
+            
             return View(model);
         }
 
         public IActionResult Article(int id)
         {
-            var article = _articleRepository.GetArticle(id);
-            return View(article);
+            var model = new OneArticleViewModel()
+            {
+                Article = _articleRepository.GetArticle(id),
+                Categories = _categoryRepository.GetAllCategories(),
+                Articles = _articleRepository.GetAllArticles()
+            };
+           
+            return View(model);
         }
 
         [HttpGet("/Image/{image}")]

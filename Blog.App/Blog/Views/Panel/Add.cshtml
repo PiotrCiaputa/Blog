@@ -3,6 +3,8 @@
     ViewData["Title"] = "Add";
 }
 
+<link href="~/lib/Trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+
 <h1>Dodaj artykuł</h1>
 
 <form asp-controller="Panel" asp-action="Add" method="post" enctype="multipart/form-data">
@@ -15,7 +17,7 @@
 
     <div class="form-group">
         <label asp-for="Body"></label>
-        <input class="form-control" asp-for="Body" />
+        <textarea id="editor" asp-for="Body" ></textarea>
         <span asp-validation-for="Body"></span>
     </div>
 
@@ -45,3 +47,11 @@
     <input type="submit" value="Dodaj artykuł" />
 
 </form>
+
+@section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/Trumbowyg/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#editor').trumbowyg();
+    </script>
+}

@@ -1,63 +1,47 @@
-﻿@model IEnumerable<HomeViewModel>
+﻿@model HomeViewModel
 
 @{
 
 }
 
-<! -- Top -->
-<div class="jumbotron text-white text-center top">
-    <div class="container">        
-        <h1 class="text-uppercase top-header">Odkryj <span class="text-warning">niesamowitą stronę</span> o kinie</h1>
-        <h5 class="text-white">Najlepszy blog o filmach i serialach</h5>
-    </div>
-</div>
-
 <section class="introduction">
     <div class="container-fluid">
-        <div class="row">
-            @foreach (var article in Model)
-            {                
-                <div class="col-lg-9 col-md-9">                    
-                    <div class="introduction-item text-center">                      
-                        
-                        @foreach (var item in article.Articles.OrderByDescending(x => x.Created))
-                        {
-                           
-                            var imagePath = $"/Image/{item.Image}";
-                            
-                                <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                                    <h3 class="title">@item.Title</h3>
-                                    <span class="date-added">Dodano: @item.Created</span>
-                                    <img src="@imagePath" alt="image" class="img-fluid img" />
-                                </a>                   
-                        }
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3">
-                    <div class="introduction-item text-center">
-                        <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
-                        @foreach (var cat in article.Categories)
-                        {
-                            <div>
-                                <a asp-controller="Home" asp-action="Index" asp-route-category="@cat.ID">
-                                    <p>@cat.Name</p>
-                                </a>
-                            </div>
-                        }
-                    </div>
-                    <div class="introduction-item text-center">
-                        <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
-                        @foreach (var item in article.Articles.OrderByDescending(x => x.Created).Take(5))
-                        {
+        <div class="row">                
+            <div class="col-lg-9 col-md-9">
+                <div class="introduction-item text-center">
+                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created))
+                    {
+                        var imagePath = $"/Image/{item.Image}";
                             <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                            <p>@item.Title</p>
-                            
+                                <h3 class="title">@item.Title</h3>
+                                <span class="date-added">Dodano: @item.Created</span>
+                                <img src="@imagePath" alt="image" class="img-fluid img" />
                             </a>
-                        }
-                    </div>
+                    }
                 </div>
-            }
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
+                    @foreach (var cat in Model.Categories)
+                    {
+                        <div>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@cat.ID">
+                                <p>@cat.Name</p>
+                            </a>
+                        </div>
+                     }                                            
+                </div>
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
+                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created).Take(5))
+                    {
+                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <p>@item.Title</p>
+                        </a>
+                    }
+                </div>
+            </div>                    
         </div>
     </div>
 </section>

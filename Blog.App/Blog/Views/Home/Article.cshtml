@@ -1,19 +1,50 @@
-﻿@model Article
+﻿@model OneArticleViewModel
 
-@{ 
+@{
 
 }
 
-<h2>@Model.Title</h2>
+   
+<section class="one-article">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 text-center">
+                <h2 class="article-title">@Model.Article.Title</h2>
 
-@if (!String.IsNullOrEmpty(Model.Image))
-{
-    var imagePath = $"/Image/{Model.Image}";
-    <img src="@imagePath" />
-}
+                @if (!String.IsNullOrEmpty(Model.Article.Image))
+                {
+                    var imagePath = $"/Image/{Model.Article.Image}";
+                    <img src="@imagePath" class="img-fluid" />
+                }
 
-<p>@Model.Body</p>
+                <p class="article-body">@Html.Raw(Model.Article.Body)</p>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <div>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@item.ID">
+                                <p>@item.Name</p>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
+                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created).Take(5))
+                    {
 
+                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <p>@item.Title</p>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
