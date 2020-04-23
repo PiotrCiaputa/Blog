@@ -1,9 +1,7 @@
 ﻿using Blog.Data;
 using Blog.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.AccessControl;
 using System.Threading.Tasks;
 
 namespace Blog.Services
@@ -24,6 +22,10 @@ namespace Blog.Services
         public List<Article> GetAllArticles()
         {
             return _context.Articles.ToList();
+        }
+        public List<Article> GetAllArticles(int categoryID)
+        {
+            return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
         }
 
         public Article GetArticle(int id)

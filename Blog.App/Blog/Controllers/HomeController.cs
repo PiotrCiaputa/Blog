@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.Models;
-using Blog.Services;
+﻿using Blog.Services;
 using Blog.Services.FileManager;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace Blog.Controllers
 {
@@ -25,14 +20,25 @@ namespace Blog.Controllers
             _categoryRepository = categoryRepository;
             _fileManager = fileManager;
         }
-        public IActionResult Index()
+        public IActionResult Index(int category)
         {
             List<HomeViewModel> model = new List<HomeViewModel>();
-            model.Add(new HomeViewModel
+            if (category == 0)
             {
-                Articles = _articleRepository.GetAllArticles(),
-                Categories = _categoryRepository.GetAllCategories()
-            });
+                model.Add(new HomeViewModel
+                {
+                    Articles = _articleRepository.GetAllArticles(),
+                    Categories = _categoryRepository.GetAllCategories()
+                });
+            }
+            else
+            {
+                model.Add(new HomeViewModel
+                {
+                    Articles = _articleRepository.GetAllArticles(category),
+                    Categories = _categoryRepository.GetAllCategories()
+                });
+            }
 
             return View(model);
         }
