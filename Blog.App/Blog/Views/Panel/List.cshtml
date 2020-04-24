@@ -7,16 +7,16 @@
 <h3><strong>Bieżące kategorie</strong></h3>
 <div>
     <ul>
-        @foreach (var article in Model)
+        @foreach (var category in Model)
         {
             <li>
                 <a>
-                    @article.Name
+                    @category.Name
                 </a>
-                <a asp-controller="Panel" asp-action="Edit" asp-route-id="@article.ID">
+                <a asp-controller="Panel" asp-action="EditCategory" asp-route-id="@category.ID">
                     Edytuj
                 </a>
-                <a asp-controller="Panel" asp-action="Remove" asp-route-id="@article.ID">
+                <a asp-controller="Panel" asp-action="DeleteCategory" asp-route-id="@category.ID">
                     Usuń
                 </a>
             </li>

@@ -9,6 +9,7 @@ using Blog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.VisualStudio.Web.CodeGeneration;
 
 namespace Blog.Controllers
@@ -47,6 +48,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(ArticleViewModel model)
         {           
             var article = new Article
@@ -73,6 +75,8 @@ namespace Blog.Controllers
             return View(article);            
         }       
 
+        // TO DO Edit Article
+
         public async Task<IActionResult> Remove(int id)
         {           
             _articleRepository.RemoveArticle(id);
@@ -95,6 +99,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddCategory(Category category)
         {
             if (ModelState.IsValid)
@@ -120,6 +125,8 @@ namespace Blog.Controllers
             return View(category);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Category category)
         {
             if(id != category.ID)
@@ -127,9 +134,42 @@ namespace Blog.Controllers
                 return NotFound();
             }
 
-            _categoryRepository.UpdateCategory(category);
-            await _categoryRepository.SaveChangesAsync();
+            if(ModelState.IsValid)
+            {
+                _categoryRepository.UpdateCategory(category);
+                await _categoryRepository.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
 
+            return View(category);                  
+        }
+
+        [HttpGet]
+        public IActionResult DeleteCategory(int id)
+        {        
+            var category = _categoryRepository.GetCategory(id);
+
+            if(category == null)
+            {
+                return NotFound();
+            }
+
+            return View(category);       
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var category = _categoryRepository.GetCategory(id);
+
+            if (category == null)
+            {
+                return View();
+            }
+
+            _categoryRepository.RemoveCategory(id);
+            await _categoryRepository.SaveChangesAsync();
             return RedirectToAction("List");
         }
     }

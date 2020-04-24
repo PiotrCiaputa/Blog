@@ -1,0 +1,17 @@
+﻿@model Category
+
+@{
+    
+}
+
+<h1>Usuń kategorię</h1>
+
+<p>Czy chcesz usunąć kategorię?</p>
+<form asp-controller="Panel" asp-action="DeleteConfirmed" method="post">
+    <div class="form-group">
+        <p>Nazwa kategorii do usunięcia: <strong>@Model.Name</strong></p>
+    </div>
+    <button class="button-primary" asp-controller="Panel" asp-action="DeleteConfirmed" asp-route-id="@Model.ID" type="submit">Tak</button>
+    <button class="button-primary" asp-controller="Panel" asp-action="List" type="submit">Nie</button>
+</form>
+
