@@ -5,48 +5,56 @@
 
 <link href="~/lib/Trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" />
 
-<h1>Dodaj artykuł</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <h2 class="text-center text-uppercase"><strong>Dodaj artykuł</strong></h2>
+            <div>
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase">Powrót do strony index</a>
+            </div>
+            <form asp-controller="Panel" asp-action="Add" method="post" enctype="multipart/form-data">
 
-<form asp-controller="Panel" asp-action="Add" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input class="form-control" asp-for="Title" />
+                    <span asp-validation-for="Title"></span>
+                </div>
 
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input class="form-control" asp-for="Title" />
-        <span asp-validation-for="Title"></span>
+                <div class="form-group">
+                    <label asp-for="Body"></label>
+                    <textarea id="editor" asp-for="Body"></textarea>
+                    <span asp-validation-for="Body"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input class="form-control" asp-for="Description" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Tags"></label>
+                    <input class="form-control" asp-for="Tags" />
+                    <span asp-validation-for="Tags"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Wybierz kategorię</label>
+                    @Html.DropDownListFor(m => m.CategoryID, Model.Categories)
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input class="form-control" asp-for="Image" />
+                    <span asp-validation-for="Image"></span>
+                </div>
+
+                <input type="submit" value="Dodaj artykuł" class="btn btn-primary text-center text-uppercase" />
+            </form>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-        <label asp-for="Body"></label>
-        <textarea id="editor" asp-for="Body" ></textarea>
-        <span asp-validation-for="Body"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <input class="form-control" asp-for="Description" />
-        <span asp-validation-for="Description"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Tags"></label>
-        <input class="form-control" asp-for="Tags" />
-        <span asp-validation-for="Tags"></span>
-    </div>
-
-    <div class="form-group">
-        <label>Wybierz kategorię</label>
-        @Html.DropDownListFor(m => m.CategoryID, Model.Categories)
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Image"></label>
-        <input class="form-control" asp-for="Image" />
-        <span asp-validation-for="Image"></span>
-    </div>
-
-    <input type="submit" value="Dodaj artykuł" />
-
-</form>
 
 @section scripts{
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

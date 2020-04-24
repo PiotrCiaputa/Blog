@@ -4,23 +4,33 @@
     
 }
 
-<h3><strong>Bieżące kategorie</strong></h3>
-<div>
-    <ul>
-        @foreach (var category in Model)
-        {
-            <li>
-                <a>
-                    @category.Name
-                </a>
-                <a asp-controller="Panel" asp-action="EditCategory" asp-route-id="@category.ID">
-                    Edytuj
-                </a>
-                <a asp-controller="Panel" asp-action="DeleteCategory" asp-route-id="@category.ID">
-                    Usuń
-                </a>
-            </li>
-        }
-    </ul>
+<div class="container">
+    <div class="row">
+        <div col-lg>
+            <h2 class="text-center text-uppercase"><strong>Bieżące kategorie</strong></h2>
+            <div>
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase">Powrót do strony index</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nazwa kategorii</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.Name</td>
+                            <td><a asp-controller="Panel" asp-action="EditCategory" asp-route-id="@category.ID" class="btn btn-primary">Edytuj</a></td>
+                            <td><a asp-controller="Panel" asp-action="DeleteCategory" asp-route-id="@category.ID" class="btn btn-primary">Usuń</a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
 

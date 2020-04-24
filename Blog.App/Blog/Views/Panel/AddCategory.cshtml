@@ -3,17 +3,21 @@
 @{
     
 }
-
-<h2>Dodaj kategorię</h2>
-
-<form asp-controller="Panel" asp-action="AddCategory" method="post">
-
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input class="form-control" asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-    </div>       
-
-    <input type="submit" value="Dodaj kategorię" />
-
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <h2 class="text-center text-uppercase"><strong>Dodaj kategorię</strong></h2>
+            <form asp-controller="Panel" asp-action="AddCategory" method="post">
+                <div class="form-group">
+                    <input class="form-control" asp-for="Name" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <input type="submit" value="Dodaj kategorię" class="btn btn-primary" />
+            </form>
+            <br />
+            <div>
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase">Powrót do strony index</a>
+            </div>
+        </div>
+    </div>
+</div>

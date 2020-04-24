@@ -23,7 +23,7 @@ namespace Blog.Services
             return _context.Categories.OrderBy(x => x.Name).ToList();
         }
 
-        public Category GetCategory(int id)
+        public Category GetCategory(int? id)
         {
             return _context.Categories.FirstOrDefault(x => x.ID == id);
         }        

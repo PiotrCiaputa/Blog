@@ -1,30 +1,38 @@
 ﻿@model IEnumerable<Article>
 
-<h1>Admin Panel</h1>
-
-<a asp-controller="Panel" asp-action="Add">Dodaj artykuł</a>
-<a asp-controller="Panel" asp-action="AddCategory">Dodaj kategorię</a>
-<a asp-controller="Panel" asp-action="List">Lista kategorii</a>
-
-<h3><strong>Bieżące artykuły</strong></h3>
-<div>
-    <ul>
-        @foreach (var article in Model)
-        {
-            <li>
-                <a>
-                    @article.Title
-                </a>
-                <a asp-controller="Panel" asp-action="Edit" asp-route-id="@article.ID">
-                    Edytuj
-                </a>
-                <a asp-controller="Panel" asp-action="Remove" asp-route-id="@article.ID">
-                    Usuń
-                </a>
-            </li>
-        }
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <h1 class="text-center text-uppercase"><strong>Admin Panel</strong></h1>
+            <a asp-controller="Panel" asp-action="Add" class="btn btn-primary">Dodaj artykuł</a>
+            <a asp-controller="Panel" asp-action="AddCategory" class="btn btn-primary">Dodaj kategorię</a>
+            <a asp-controller="Panel" asp-action="List" class="btn btn-primary">Lista kategorii</a>
+            <br />
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-uppercase">Bieżące artykuły</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var article in Model)
+                    {
+                        <tr>
+                            <td>@article.Title</td>
+                            <td><a asp-controller="Panel" asp-action="Edit" asp-route-id="@article.ID" class="btn btn-primary">
+                                Edytuj
+                            </a></td>
+                            <td><a asp-controller="Panel" asp-action="Remove" asp-route-id="@article.ID" class="btn btn-primary">
+                                Usuń
+                            </a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
 
 
 

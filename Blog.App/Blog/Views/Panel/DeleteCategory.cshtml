@@ -4,14 +4,25 @@
     
 }
 
-<h1>Usuń kategorię</h1>
-
-<p>Czy chcesz usunąć kategorię?</p>
-<form asp-controller="Panel" asp-action="DeleteConfirmed" method="post">
-    <div class="form-group">
-        <p>Nazwa kategorii do usunięcia: <strong>@Model.Name</strong></p>
+<div container>
+    <div class="row">
+        <div class="col-lg-8 col-md-4">
+            <h2 class="text-center text-uppercase"><strong>Usuń kategorię</strong></h2>
+            <br />
+            <p class="text-center">Czy chcesz usunąć kategorię?</p>
+            <form asp-controller="Panel" asp-action="DeleteConfirmed" method="post">
+                <input class="form-control text-center" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+                <div class="text-center">
+                    <input class="btn btn-primary" asp-controller="Panel" asp-action="DeleteConfirmed" asp-route-id="@Model.ID" type="submit" value="Tak" />
+                    <input class="btn btn-primary" asp-controller="Panel" asp-action="List" type="submit" value="Nie" />
+                </div>
+            </form>
+            <div>
+                <a asp-controller="Panel" asp-action="List" class="btn btn-warning text-center text-uppercase">Powrót do listy kategorii</a>
+            </div>
+        </div>
     </div>
-    <button class="button-primary" asp-controller="Panel" asp-action="DeleteConfirmed" asp-route-id="@Model.ID" type="submit">Tak</button>
-    <button class="button-primary" asp-controller="Panel" asp-action="List" type="submit">Nie</button>
-</form>
+</div>
+
 

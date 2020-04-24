@@ -47,6 +47,8 @@ namespace Blog.Controllers
             return View(articleViewModel);
         }
 
+        //Artykuły
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(ArticleViewModel model)
@@ -73,18 +75,33 @@ namespace Blog.Controllers
             }
 
             return View(article);            
-        }       
+        }
 
         // TO DO Edit Article
 
-        public async Task<IActionResult> Remove(int id)
+        [HttpGet]
+        public IActionResult Remove(int id)
+        {
+            var article = _articleRepository.GetArticle(id);
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            return View(article);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveConfirmed(int id)
         {           
             _articleRepository.RemoveArticle(id);
             await _articleRepository.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        // Lista kategorii
+        // Kategorie
         public IActionResult List()
         {
             var categories = _categoryRepository.GetAllCategories();
@@ -113,8 +130,13 @@ namespace Blog.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditCategory(int id)
+        public IActionResult EditCategory(int? id)
         {          
+            if(id == null)
+            {
+                return NotFound();
+            }
+
             var category = _categoryRepository.GetCategory(id);
 
             if (category == null)
@@ -127,8 +149,13 @@ namespace Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Category category)
+        public async Task<IActionResult> Edit(int? id, Category category)
         {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
             if(id != category.ID)
             {
                 return NotFound();
@@ -161,13 +188,6 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = _categoryRepository.GetCategory(id);
-
-            if (category == null)
-            {
-                return View();
-            }
-
             _categoryRepository.RemoveCategory(id);
             await _categoryRepository.SaveChangesAsync();
             return RedirectToAction("List");
