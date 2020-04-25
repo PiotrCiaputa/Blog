@@ -20,5 +20,6 @@ namespace Blog.ViewModels
         public int CategoryID { get; set; }
         public List<SelectListItem> Categories { get; set; } = new List<SelectListItem>();
         public IFormFile Image { get; set; } = null;
+        public string CurrentImage { get; set; }
     }
 }

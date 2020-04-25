@@ -9,7 +9,7 @@ namespace Blog.Services
         List<Article> GetAllArticles();
         List<Article> GetAllArticles(int categoryID);
         void AddArticle(Article article);
-        Article GetArticle(int id);
+        Article GetArticle(int? id);
         void UpdateArticle(Article article);
         void RemoveArticle(int id);
 

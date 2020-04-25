@@ -1,7 +1,9 @@
 ﻿@model OneArticleViewModel
 
 @{
-
+    ViewBag.Title = Model.Article.Title;
+    ViewBag.Description = Model.Article.Description;
+    ViewBag.Keywords = $"{Model.Article.Tags?.Replace(',', ' ')}";
 }
 
 <! -- Top -->

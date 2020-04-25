@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Blog.Models;
+﻿using Blog.Models;
 using Blog.Services;
 using Blog.Services.FileManager;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.VisualStudio.Web.CodeGeneration;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
@@ -33,7 +29,9 @@ namespace Blog.Controllers
         {
             var articles = _articleRepository.GetAllArticles();
             return View(articles);
-        }        
+        }
+
+        //Artykuły
 
         [HttpGet]
         public IActionResult Add()
@@ -45,9 +43,7 @@ namespace Blog.Controllers
                   .Select(c => new SelectListItem { Text = c.Name, Value = c.ID.ToString() }).ToList();
 
             return View(articleViewModel);
-        }
-
-        //Artykuły
+        }        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -77,7 +73,64 @@ namespace Blog.Controllers
             return View(article);            
         }
 
-        // TO DO Edit Article
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return View(new ArticleViewModel());
+            }
+
+            var article = _articleRepository.GetArticle(id);
+
+            return View(new ArticleViewModel
+            {
+                ID = article.ID,
+                Title = article.Title,
+                Body = article.Body,
+                Description = article.Description,
+                Tags = article.Tags,
+                Categories = _categoryRepository.GetAllCategories().Select(c => new SelectListItem { Text = c.Name, Value = c.ID.ToString() }).ToList(),
+                CategoryID = article.CategoryID,
+                CurrentImage = article.Image
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ArticleViewModel model)
+        {
+            var article = new Article
+            {
+                ID = model.ID,
+                Title = model.Title,
+                Body = model.Body,
+                Description = model.Description,
+                Tags = model.Tags,
+                Created = model.Created,
+                CategoryID = model.CategoryID,
+                Category = _categoryRepository.GetCategory(model.CategoryID)
+            };
+
+            if (model.Image == null)
+            {
+                article.Image = model.CurrentImage;
+            }
+            else
+            {
+                article.Image = await _fileManager.SaveImage(model.Image);
+            }
+
+            if (ModelState.IsValid)
+            {
+                _articleRepository.UpdateArticle(article);
+                await _articleRepository.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(article);
+        }
 
         [HttpGet]
         public IActionResult Remove(int id)
@@ -149,7 +202,7 @@ namespace Blog.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, Category category)
+        public async Task<IActionResult> EditCategory(int? id, Category category)
         {
             if(id == null)
             {

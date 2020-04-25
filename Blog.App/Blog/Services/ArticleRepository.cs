@@ -28,7 +28,7 @@ namespace Blog.Services
             return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
         }
 
-        public Article GetArticle(int id)
+        public Article GetArticle(int? id)
         {
             return _context.Articles.FirstOrDefault(x => x.ID == id);
         }
