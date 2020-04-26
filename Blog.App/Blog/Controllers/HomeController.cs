@@ -1,8 +1,12 @@
-﻿using Blog.Services;
+﻿using Blog.Models;
+using Blog.Services;
 using Blog.Services.FileManager;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
@@ -61,5 +65,29 @@ namespace Blog.Controllers
             var mime = image.Substring(image.LastIndexOf('.') + 1);
             return new FileStreamResult(_fileManager.StreamImage(image), $"image/{mime}");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Comment(CommentViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Article", new { id = model.ArticleID });
+            }
+
+            var article = _articleRepository.GetArticle(model.ArticleID);
+
+            
+            article.Comments = article.Comments ?? new List<Comment>();
+
+            article.Comments.Add(new Comment
+            {                
+                Message = model.Message,                
+                Created = DateTime.Now
+            });
+
+            _articleRepository.UpdateArticle(article);            
+            await _articleRepository.SaveChangesAsync();
+            return RedirectToAction("Article", new { id = model.ArticleID });
+         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model CommentViewModel
+
+@{ 
+
+}
+
+<div>
+    <form asp-controller="Home" asp-action="Comment" method="post">
+        <input asp-for="ArticleID" type="hidden"/>
+        <input asp-for="ID" type="hidden"/>
+        <label asp-for="Message"><strong>Dodaj komentarz</strong></label><br />
+        <textarea asp-for="Message"></textarea><br />
+        <button type="submit">Wyślij</button>
+    </form>
+</div>

@@ -6,11 +6,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\content\blog\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\lib\Trumbowyg\.github\FUNDING.yml" />
-    <None Include="wwwroot\lib\Trumbowyg\.github\ISSUE_TEMPLATE.md" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
   <ItemGroup>

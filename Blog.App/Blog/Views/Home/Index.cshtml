@@ -44,7 +44,7 @@
                 </div>
                 <div class="introduction-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
-                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created).Take(5))
+                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created).Take(10))
                     {
                         <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
                             <p>@item.Title</p>

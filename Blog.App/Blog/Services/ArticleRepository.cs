@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace Blog.Services
 
         public Article GetArticle(int? id)
         {
-            return _context.Articles.FirstOrDefault(x => x.ID == id);
+            return _context.Articles.Include(y => y.Comments).FirstOrDefault(x => x.ID == id);
         }
 
         public void UpdateArticle(Article article)

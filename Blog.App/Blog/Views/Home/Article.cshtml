@@ -28,6 +28,18 @@
                 }
 
                 <p class="article-body">@Html.Raw(Model.Article.Body)</p>
+
+                <div class="comment-section">
+                    @foreach (var item in Model.Article.Comments)
+                    {
+                        <p>
+                            @item.Message --- @item.Created
+                        </p>
+                    }
+                    @{
+                        await Html.RenderPartialAsync("_CommentPartialView", new CommentViewModel { ArticleID = Model.Article.ID });
+                    }
+                </div>
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="introduction-item text-center">
