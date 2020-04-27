@@ -1,4 +1,5 @@
 ﻿using Blog.Models;
+using Blog.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace Blog.Services
 {
     public interface IArticleRepository
     {
-        List<Article> GetAllArticles();
+        List<Article> GetAllArticles();        
         List<Article> GetAllArticles(int categoryID);
         void AddArticle(Article article);
         Article GetArticle(int? id);

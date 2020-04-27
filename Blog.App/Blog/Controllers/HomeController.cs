@@ -3,10 +3,10 @@ using Blog.Services;
 using Blog.Services.FileManager;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Blog.Controllers
 {
@@ -24,14 +24,18 @@ namespace Blog.Controllers
             _categoryRepository = categoryRepository;
             _fileManager = fileManager;
         }
-        public IActionResult Index(int category)
+        public IActionResult Index(int category, int? page)
         {
+            var pageNumber = page ?? 1;
+
             HomeViewModel model;
-            if(category == 0)
+
+            if (category == 0)
             {
+
                 model = new HomeViewModel()
                 {
-                    Articles = _articleRepository.GetAllArticles(),
+                    Articles = _articleRepository.GetAllArticles().ToPagedList(pageNumber, 3),
                     Categories = _categoryRepository.GetAllCategories()
                 };
             }
@@ -39,11 +43,12 @@ namespace Blog.Controllers
             {
                 model = new HomeViewModel()
                 {
-                    Articles = _articleRepository.GetAllArticles(category),
+                    
+                    Articles = _articleRepository.GetAllArticles(category).ToPagedList(pageNumber, 3),
                     Categories = _categoryRepository.GetAllCategories()
                 };
-            }           
-            
+            }            
+
             return View(model);
         }
 

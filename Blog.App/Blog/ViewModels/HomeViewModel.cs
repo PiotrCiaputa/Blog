@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 namespace Blog.ViewModels
 {
     public class HomeViewModel
-    {
+    {        
         public IEnumerable<Article> Articles { get; set; }
         public IEnumerable<Category> Categories { get; set; }
-
     }
 }

@@ -1,4 +1,6 @@
-﻿@model HomeViewModel
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model HomeViewModel
 
 @{
     ViewBag.Title = "Blog o filmach i serialach";
@@ -28,6 +30,9 @@
                             <img src="@imagePath" alt="image" class="img-fluid img" />
                         </a>
                     }
+                </div>
+                <div>
+                    @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index", "Home", new { page = page }));
                 </div>
             </div>
             <div class="col-lg-3 col-md-3">

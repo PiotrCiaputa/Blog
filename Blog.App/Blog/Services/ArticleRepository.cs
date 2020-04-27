@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Blog.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +20,7 @@ namespace Blog.Services
         {
             _context.Articles.Add(article);
         }
-
-        public List<Article> GetAllArticles()
-        {
-            return _context.Articles.ToList();
-        }
-        public List<Article> GetAllArticles(int categoryID)
-        {
-            return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
-        }
-
+        
         public Article GetArticle(int? id)
         {
             return _context.Articles.Include(y => y.Comments).FirstOrDefault(x => x.ID == id);
@@ -52,6 +44,16 @@ namespace Blog.Services
                 }
 
                 return false;           
-        }        
+        }
+
+        public List<Article> GetAllArticles()
+        {
+            return _context.Articles.ToList();
+        }
+
+        public List<Article> GetAllArticles(int categoryID)
+        {
+            return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
+        }       
     }
 }
