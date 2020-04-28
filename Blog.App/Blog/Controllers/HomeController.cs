@@ -15,7 +15,7 @@ namespace Blog.Controllers
         private readonly IArticleRepository _articleRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IFileManager _fileManager;
-        
+
         public HomeController(IArticleRepository articleRepository,
                               ICategoryRepository categoryRepository,
                               IFileManager fileManager)
@@ -36,19 +36,20 @@ namespace Blog.Controllers
                 model = new HomeViewModel()
                 {
                     Articles = _articleRepository.GetAllArticles().ToPagedList(pageNumber, 3),
+                    AllArticles = _articleRepository.GetAllArticles(),
                     Categories = _categoryRepository.GetAllCategories()
                 };
-            }
+            }            
             else
             {
                 model = new HomeViewModel()
                 {
-                    
                     Articles = _articleRepository.GetAllArticles(category).ToPagedList(pageNumber, 3),
+                    AllArticles = _articleRepository.GetAllArticles(),
                     Categories = _categoryRepository.GetAllCategories()
                 };
-            }            
-
+            }
+            
             return View(model);
         }
 

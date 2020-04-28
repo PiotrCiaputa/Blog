@@ -31,10 +31,12 @@
                         </a>
                     }
                 </div>
-                <div>
-                    @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index", "Home", new { page = page }));
-                </div>
+                
+                @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index", 
+                    "Home", new { page = page }), PagedListRenderOptions.MinimalWithPageCountText)
+                  
             </div>
+
             <div class="col-lg-3 col-md-3">
                 <div class="introduction-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
@@ -47,10 +49,13 @@
                         </div>
                     }
                 </div>
+
                 <div class="introduction-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
-                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created).Take(10))
+
+                    @foreach (var item in Model.AllArticles.ToList().OrderByDescending(x => x.Created).Take(10))
                     {
+
                         <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
                             <p>@item.Title</p>
                         </a>
