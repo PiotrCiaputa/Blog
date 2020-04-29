@@ -20,9 +20,15 @@
             <div class="collapse navbar-collapse" id="navContent">
                 <div class="navbar-nav">
                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
-                    <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
+
                     @if (User.Identity.IsAuthenticated)
                     {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
+                        }
+
+                        <span class="text-danger">Witaj, @User.Identity.Name</span>
                         <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Wyloguj się</a>
                     }
                     else

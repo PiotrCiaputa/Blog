@@ -13,6 +13,6 @@ namespace Blog.ViewModels
         [Required]
         public string Message { get; set; }       
 
-        public int ArticleID { get; set; }
+        public int ArticleID { get; set; }       
     }
 }

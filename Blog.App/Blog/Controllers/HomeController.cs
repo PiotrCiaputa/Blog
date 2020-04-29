@@ -86,7 +86,7 @@ namespace Blog.Controllers
             article.Comments = article.Comments ?? new List<Comment>();
 
             article.Comments.Add(new Comment
-            {                
+            {           
                 Message = model.Message,                
                 Created = DateTime.Now
             });
