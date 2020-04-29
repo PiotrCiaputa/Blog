@@ -1,6 +1,5 @@
 ﻿using Blog.Data;
 using Blog.Models;
-using Blog.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,12 +48,14 @@ namespace Blog.Services
 
         public List<Article> GetAllArticles()
         {
-            return _context.Articles.ToList();
+            return _context.Articles.OrderByDescending(x => x.Created).ToList();
         }
 
         public List<Article> GetAllArticles(int categoryID)
         {
-            return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
+            return _context.Articles.Where(x => x.CategoryID == categoryID)
+                                    .OrderByDescending(x => x.Created)
+                                    .ToList();
         }
 
         public List<Article> GetAllArticles(string search)
@@ -67,7 +68,7 @@ namespace Blog.Services
                                     || EF.Functions.Like(x.Description, $"%{search}%")
                                     || EF.Functions.Like(x.Tags, $"%{search}%"));
 
-                return query.ToList();                
+                return query.OrderByDescending(x => x.Created).ToList();                
         }
     }
 }

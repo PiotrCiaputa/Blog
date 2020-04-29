@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-lg-9 col-md-9">
                 <div class="introduction-item text-center">
-                    @foreach (var item in Model.Articles.OrderByDescending(x => x.Created))
+                    @foreach (var item in Model.Articles)
                     {
                         var imagePath = $"/Image/{item.Image}";
                         <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
