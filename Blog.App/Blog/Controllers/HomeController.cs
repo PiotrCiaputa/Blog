@@ -24,7 +24,7 @@ namespace Blog.Controllers
             _categoryRepository = categoryRepository;
             _fileManager = fileManager;
         }
-        public IActionResult Index(int category, int? page)
+        public IActionResult Index(int category, int? page, string search)
         {
             var pageNumber = page ?? 1;
 
@@ -35,7 +35,7 @@ namespace Blog.Controllers
 
                 model = new HomeViewModel()
                 {
-                    Articles = _articleRepository.GetAllArticles().ToPagedList(pageNumber, 3),
+                    Articles = _articleRepository.GetAllArticles(search).ToPagedList(pageNumber, 3),
                     AllArticles = _articleRepository.GetAllArticles(),
                     Categories = _categoryRepository.GetAllCategories()
                 };

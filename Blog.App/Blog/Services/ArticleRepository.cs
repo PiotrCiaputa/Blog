@@ -2,6 +2,7 @@
 using Blog.Models;
 using Blog.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -54,6 +55,19 @@ namespace Blog.Services
         public List<Article> GetAllArticles(int categoryID)
         {
             return _context.Articles.Where(x => x.CategoryID == categoryID).ToList();
-        }       
+        }
+
+        public List<Article> GetAllArticles(string search)
+        {
+            var query = _context.Articles.AsNoTracking().AsQueryable();
+            if (!String.IsNullOrEmpty(search))
+
+                query = query.Where(x => EF.Functions.Like(x.Title, $"%{search}%")
+                                    || EF.Functions.Like(x.Body, $"%{search}%")
+                                    || EF.Functions.Like(x.Description, $"%{search}%")
+                                    || EF.Functions.Like(x.Tags, $"%{search}%"));
+
+                return query.ToList();                
+        }
     }
 }

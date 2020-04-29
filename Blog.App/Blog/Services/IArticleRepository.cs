@@ -8,6 +8,7 @@ namespace Blog.Services
     public interface IArticleRepository
     {
         List<Article> GetAllArticles();        
+        List<Article> GetAllArticles(string search);        
         List<Article> GetAllArticles(int categoryID);
         void AddArticle(Article article);
         Article GetArticle(int? id);

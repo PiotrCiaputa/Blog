@@ -51,6 +51,15 @@
             </div>
                        
             <div class="col-lg-3 col-md-3">
+
+                <div class="search text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Wyszukaj</h4>
+                    <form asp-controller="Home" asp-action="Index" method="get">
+                        <input type="text" name="search" placeholder="Wyszukaj" />
+                        <input type="submit" value="Wyszukaj" />
+                    </form>
+                </div>
+
                 <div class="introduction-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
                     @foreach (var item in Model.Categories)
