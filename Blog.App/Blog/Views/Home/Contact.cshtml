@@ -1,11 +1,7 @@
-﻿@using X.PagedList.Mvc.Core;
-@using X.PagedList;
-@model HomeViewModel
+﻿@model ContactViewModel
 
 @{
-    ViewBag.Title = "Blog o filmach i serialach";
-    ViewBag.Description = "Blog zawiera wszystkie najważniejsze informacje o filmach i serialach";
-    ViewBag.Keywords = "blog film serial";
+
 }
 
 <! -- Top -->
@@ -20,21 +16,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
-                <div class="introduction-item text-center">
-                    @foreach (var item in Model.Articles)
-                    {
-                        var imagePath = $"/Image/{item.Image}";
-                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                            <h3 class="title">@item.Title</h3>
-                            <span class="date-added">Dodano: @item.Created</span>
-                            <img src="@imagePath" alt="image" class="img-fluid img" />
-                        </a>
-                    }
-                </div>
-                
-                @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index", 
-                    "Home", new { page = page }), PagedListRenderOptions.MinimalWithPageCountText)
-                  
+                <h1 class="text-center">Kontakt</h1>
+                <address class="text-center">                   
+                    Blogzone Foundation<br>
+                    331 E Evelyn Ave<br>
+                    Mountain View, CA 94041<br>
+                    USA
+                </address>
             </div>
 
             <div class="col-lg-3 col-md-3">
@@ -44,7 +32,7 @@
                     <form asp-controller="Home" asp-action="Index" method="get">
                         <input type="text" name="search" placeholder="Wyszukaj" />
                         <input type="submit" value="Wyszukaj" />
-                    </form>                    
+                    </form>
                 </div>
 
                 <div class="introduction-item text-center">
@@ -62,7 +50,7 @@
                 <div class="introduction-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
 
-                    @foreach (var item in Model.AllArticles.Take(10))
+                    @foreach (var item in Model.Articles.Take(10))
                     {
 
                         <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">

@@ -95,5 +95,29 @@ namespace Blog.Controllers
             await _articleRepository.SaveChangesAsync();
             return RedirectToAction("Article", new { id = model.ArticleID });
          }
+
+        [HttpGet]
+        public IActionResult About()
+        {
+            AboutViewModel model = new AboutViewModel
+            {
+                Articles = _articleRepository.GetAllArticles(),
+                Categories = _categoryRepository.GetAllCategories()
+            };
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            ContactViewModel model = new ContactViewModel
+            {
+                Articles = _articleRepository.GetAllArticles(),
+                Categories = _categoryRepository.GetAllCategories()
+            };
+
+            return View(model);
+        }
     }
 }

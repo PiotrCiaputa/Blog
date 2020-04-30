@@ -20,30 +20,39 @@
             <div class="collapse navbar-collapse" id="navContent">
                 <div class="navbar-nav">
                     <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @if (User.IsInRole("Admin"))
+                    <a asp-controller="Home" asp-action="About" class="nav-item nav-link">O blogu</a>
+                    <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Kontakt</a>
+                    <div class="text-left">
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
-                        }
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
+                            }
 
-                        <span class="text-danger">Witaj, @User.Identity.Name</span>
-                        <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Wyloguj się</a>
-                    }
-                    else
-                    {
-                        <a asp-controller="Account" asp-action="Login" class="nav-item nav-link">Zaloguj się</a>
-                    }
+                            <span class="text-danger">Witaj, @User.Identity.Name</span>
+                            <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Wyloguj się</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="Login" class="nav-item nav-link">Zaloguj się</a>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>    
+    </nav>
     <div>
         @RenderBody()
-        
-    </div>   
-    
+
+    </div>
+
+    <footer class="page-footer bg-dark text-center text-white">    
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright        
+        </div>    
+    </footer>
+
     @RenderSection("scripts", false)
 </body>
 </html>

@@ -1,0 +1,90 @@
+﻿@model AboutViewModel
+
+@{
+
+}
+
+<! -- Top -->
+<div class="jumbotron text-white text-center top">
+    <div class="container">
+        <h1 class="text-uppercase top-header">Odkryj <span class="text-warning">niesamowitą stronę</span> o kinie</h1>
+        <h5 class="text-white">Najlepszy blog o filmach i serialach</h5>
+    </div>
+</div>
+
+<section class="introduction">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-9">
+                <h1 class="text-center">O Blogu</h1>
+                <p class="text-center">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
+                    est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                    libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
+                    maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+                    Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
+                    et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
+                    sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                    doloribus asperiores repellat.
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
+                    est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                    libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
+                    maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+                    Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
+                    et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
+                    sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                    doloribus asperiores repellat.
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id
+                    est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+                    libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
+                    maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+                    Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut
+                    et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a
+                    sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                    doloribus asperiores repellat.
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-3">
+
+                <div class="search text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Wyszukaj</h4>
+                    <form asp-controller="Home" asp-action="Index" method="get">
+                        <input type="text" name="search" placeholder="Wyszukaj" />
+                        <input type="submit" value="Wyszukaj" />
+                    </form>
+                </div>
+
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
+                    @foreach (var cat in Model.Categories)
+                    {
+                        <div>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="@cat.ID">
+                                <p>@cat.Name</p>
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="introduction-item text-center">
+                    <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
+
+                    @foreach (var item in Model.Articles.Take(10))
+                    {
+
+                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                            <p>@item.Title</p>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
