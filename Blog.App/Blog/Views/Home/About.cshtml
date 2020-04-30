@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<section class="introduction">
+<section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-9 col-md-9">
@@ -61,7 +61,7 @@
                     </form>
                 </div>
 
-                <div class="introduction-item text-center">
+                <div class="content-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
                     @foreach (var cat in Model.Categories)
                     {
@@ -73,7 +73,7 @@
                     }
                 </div>
 
-                <div class="introduction-item text-center">
+                <div class="content-item text-center">
                     <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
 
                     @foreach (var item in Model.Articles.Take(10))
@@ -88,3 +88,8 @@
         </div>
     </div>
 </section>
+<footer class="page-footer bg-dark text-center text-white">
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright
+    </div>
+</footer>

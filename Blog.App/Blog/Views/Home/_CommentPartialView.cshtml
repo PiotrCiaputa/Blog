@@ -4,12 +4,12 @@
 
 }
 
-<div>
+<div class="text-center message-form">
+    <h4 class="text-uppercase">Dodaj komentarz</h4>
     <form asp-controller="Home" asp-action="Comment" method="post">
         <input asp-for="ArticleID" type="hidden"/>
-        <input asp-for="ID" type="hidden"/>
-        <label asp-for="Message"><strong>Dodaj komentarz</strong></label><br />
-        <textarea asp-for="Message"></textarea><br />
-        <button type="submit">Wyślij</button>
+        <input asp-for="ID" type="hidden"/>        
+        <textarea asp-for="Message" cols="40" rows="5"></textarea><br />
+        <button type="submit" class="btn btn-warning text-uppercase comment-button">Dodaj</button>
     </form>
 </div>

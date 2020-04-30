@@ -16,61 +16,76 @@
     </div>
 </div>
 
-<section class="introduction">
+<section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-9 col-md-9">
-                <div class="introduction-item text-center">
-                    @foreach (var item in Model.Articles)
-                    {
-                        var imagePath = $"/Image/{item.Image}";
-                        <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                            <h3 class="title">@item.Title</h3>
-                            <span class="date-added">Dodano: @item.Created</span>
-                            <img src="@imagePath" alt="image" class="img-fluid img" />
-                        </a>
-                    }
-                </div>
-                
-                @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index", 
-                    "Home", new { page = page }), PagedListRenderOptions.MinimalWithPageCountText)
-                  
+            <div class="col-lg-8 col-md-8">
+
+                @foreach (var item in Model.Articles)
+                {
+                    var imagePath = $"/Image/{item.Image}";
+                    <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
+                        <h3 class="title text-center">@item.Title</h3>
+                        <img src="@imagePath" alt="image" class="img-fluid img" />
+                    </a>
+                }
+
+
             </div>
 
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-4 col-md-4">
 
                 <div class="search text-center">
-                    <h4 class="text-center text-uppercase introduction-header">Wyszukaj</h4>
+                    <h3 class="text-center text-uppercase search-header">Wyszukaj</h3>
                     <form asp-controller="Home" asp-action="Index" method="get">
-                        <input type="text" name="search" placeholder="Wyszukaj" />
-                        <input type="submit" value="Wyszukaj" />
-                    </form>                    
+                        <input type="text" name="search" placeholder="Wyszukaj" class="search-input" />
+                        <input type="submit" value="Wyszukaj" class="btn btn-warning search-button" />
+                    </form>
                 </div>
 
-                <div class="introduction-item text-center">
-                    <h4 class="text-center text-uppercase introduction-header">Kategorie</h4>
+                <div class="content-item text-center">
+                    <h3 class="text-center text-uppercase category-header">Kategorie</h3>
                     @foreach (var cat in Model.Categories)
                     {
                         <div>
                             <a asp-controller="Home" asp-action="Index" asp-route-category="@cat.ID">
-                                <p>@cat.Name</p>
+                                <p class="category-item">@cat.Name</p>
                             </a>
                         </div>
                     }
                 </div>
 
-                <div class="introduction-item text-center">
-                    <h4 class="text-center text-uppercase introduction-header">Ostatnio dodane artykuły</h4>
+                <div class="content-item text-center">
+                    <h3 class="text-center text-uppercase last-added-header">Ostatnio dodane artykuły</h3>
 
                     @foreach (var item in Model.AllArticles.Take(10))
                     {
 
                         <a asp-controller="Home" asp-action="Article" asp-route-id="@item.ID">
-                            <p>@item.Title</p>
+                            <p class="last-added-article">@item.Title</p>
                         </a>
                     }
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 pagination">
+                    <div class="pagination-content">
+                        <div class="pagination-item">
+                            <div class="pagination-one-item">
+                                @Html.PagedListPager((IPagedList)Model.Articles, page => Url.Action("Index",
+                                "Home", new { page = page }))
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>  
     </div>
 </section>
+<footer class="page-footer bg-dark text-center text-white">
+    <div class="footer-copyright text-center py-3">
+        © 2020 Copyright
+    </div>
+</footer>

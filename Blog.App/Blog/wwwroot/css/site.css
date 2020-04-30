@@ -1,23 +1,12 @@
-﻿/** Global style */
-body {
-    margin: 0;
-}
-
+﻿/** Global **/
 a {
-    color: black;
-    text-decoration: none;
+    color: black;    
 }
 
 a:hover {
     color: blue;
     text-decoration: none;
 }
-
-.date-added {
-    font-size: .8rem;
-    color: gray;      
-}
-
 
 /** Navbar **/
 .navbar .navbar-nav .nav-item {
@@ -27,16 +16,16 @@ a:hover {
 
 /** Top **/
 .top {
-    padding: 150px 0 175px;
-    background-image: url('../content/static/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg');
+    padding: 165px 0 175px;
+    background-image: url("../content/static/erik-witsoe-GF8VvBgcJ4o-unsplash.jpg");
     background-position: 50% 50%;
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .top-header {
     margin-bottom: 1.25rem;
-    font-size: 2.75rem;   
+    font-size: 2.75rem;
 }
 
 .top-text {
@@ -44,36 +33,136 @@ a:hover {
 }
 
 /** Content **/
-.introduction {
-    padding: 50px 0 60px;  
-    
+.content {
+    padding: 50px 0 60px;
 }
 
-.introduction-header {
-    margin-bottom: 20px;
+.title {
+    padding: 2.2rem 0 0 0;
+    font-size: 1.3rem;
     font-weight: 700;
-}
-
-.introduction-item {
-   margin-bottom: 2rem;
-}
-
-.title
-{
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding-top: 2rem;   
-    text-align:center;
 }
 
 .img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    width: 65%;  
 }
 
-/* Article */
+/** Searching **/
+.search {
+    padding: 2rem 0 4rem 0;    
+}
+
+.search-header {
+    padding-bottom: 1rem;
+    font-weight: 700;
+}
+
+.search-input {
+    padding: .45rem;
+    border-radius: 1px 1px;
+}
+
+.search-button {
+    margin-top: -4px;
+}
+
+/** Category **/
+.category-header {
+    padding-bottom: .7rem;
+    font-weight: 700;
+}
+
+.category-item {
+    font-size: 1.2rem;
+}
+
+.last-added-header {
+    padding: 4rem 0 .7rem 0;
+    font-weight: 700;
+}
+
+.last-added-article {
+    font-size: 1rem;
+}
+
+/** Paginacja **/
+.pagination {   
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pagination-content {
+    list-style-type: none;    
+}
+
+.pagination-item {
+    font-size: 1.5rem;
+    letter-spacing: 1rem; 
+    background-color: yellow;
+}
+
+.pagination-item pagination-one-item:hover:not(.active) {
+    background-color: #4CAF50;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/** Footer **/
+.page-footer {
+    margin-top: 4rem;
+}
+
+/** One Article **/
+.title-article {
+    padding: 2.2rem 0 0 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.img-article {
+    display: block;
+    margin: 0 auto;
+    padding-top: 1rem;
+    width: 80%;
+}
+
+.article-body {
+    display: flex;
+    font-size: 1rem;
+    line-height: 1.6;
+    justify-content: flex-start;
+    padding-top: 2rem;    
+}
+
+/** Comment **/
+.message-form {
+    padding-top: 3rem;
+}
+
+.comment-blocked {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.comment-header {
+    font-weight: 700;
+}
+
+.comment-message {    
+    font-size: 1rem;
+    padding-bottom: 1rem;
+}
+
+.comment-button {
+    padding: .3rem 2rem;
+    font-weight: 700;
+}
 
 
 

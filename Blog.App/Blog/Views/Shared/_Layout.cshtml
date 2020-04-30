@@ -1,28 +1,27 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html lang="pl">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0", shrink-to-fit="no" />
     <title>@ViewBag.Title</title>
     <meta name="description" content="@ViewBag.Description" />
     <meta name="keywords" content="@ViewBag.Keywords" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-color: #00ffee">
     <! -- Navbar -- >
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <nav class="navbar bg-dark navbar-expand-lg">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon text-white"></span>
             </button>
             <div class="collapse navbar-collapse" id="navContent">
-                <div class="navbar-nav">
-                    <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
-                    <a asp-controller="Home" asp-action="About" class="nav-item nav-link">O blogu</a>
-                    <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Kontakt</a>
-                    <div class="text-left">
+                <div class="navbar-nav">                  
+                        <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
+                        <a asp-controller="Home" asp-action="About" class="nav-item nav-link">O blogu</a>
+                        <a asp-controller="Home" asp-action="Contact" class="nav-item nav-link">Kontakt</a>                 
                         @if (User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
@@ -30,28 +29,21 @@
                                 <a asp-controller="Panel" asp-action="Index" class="nav-item nav-link">Admin Panel</a>
                             }
 
-                            <span class="text-danger">Witaj, @User.Identity.Name</span>
+                            <span class="text-warning">Witaj, @User.Identity.Name</span>
                             <a asp-controller="Account" asp-action="Logout" class="nav-item nav-link">Wyloguj się</a>
                         }
                         else
                         {
                             <a asp-controller="Account" asp-action="Login" class="nav-item nav-link">Zaloguj się</a>
-                        }
-                    </div>
+                        }                    
                 </div>
             </div>
         </div>
     </nav>
+
     <div>
         @RenderBody()
-
     </div>
-
-    <footer class="page-footer bg-dark text-center text-white">    
-        <div class="footer-copyright text-center py-3">
-            © 2020 Copyright        
-        </div>    
-    </footer>
 
     @RenderSection("scripts", false)
 </body>
