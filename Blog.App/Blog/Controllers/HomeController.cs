@@ -2,6 +2,7 @@
 using Blog.Services;
 using Blog.Services.FileManager;
 using Blog.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,19 @@ namespace Blog.Controllers
     public class HomeController : Controller
     {
         private readonly IArticleRepository _articleRepository;
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;        
         private readonly IFileManager _fileManager;
+        private UserManager<User> _userManager;
 
         public HomeController(IArticleRepository articleRepository,
                               ICategoryRepository categoryRepository,
-                              IFileManager fileManager)
+                              IFileManager fileManager,
+                              UserManager<User> userManager)
         {
             _articleRepository = articleRepository;
             _categoryRepository = categoryRepository;
             _fileManager = fileManager;
+            _userManager = userManager;            
         }
         public IActionResult Index(int category, int? page, string search)
         {
@@ -59,7 +63,7 @@ namespace Blog.Controllers
             {
                 Article = _articleRepository.GetArticle(id),
                 Categories = _categoryRepository.GetAllCategories(),
-                Articles = _articleRepository.GetAllArticles()
+                Articles = _articleRepository.GetAllArticles()                
             };
            
             return View(model);
@@ -82,13 +86,15 @@ namespace Blog.Controllers
 
             var article = _articleRepository.GetArticle(model.ArticleID);
 
+            model.UserId = _userManager.GetUserId(HttpContext.User);
             
             article.Comments = article.Comments ?? new List<Comment>();
 
             article.Comments.Add(new Comment
-            {           
-                Message = model.Message,                
-                Created = DateTime.Now
+            {            
+                Message = model.Message,
+                Created = DateTime.Now,
+                UserId = model.UserId                
             });
 
             _articleRepository.UpdateArticle(article);            

@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Blog.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Blog.ViewModels
 {
@@ -13,6 +11,8 @@ namespace Blog.ViewModels
         [Required]
         public string Message { get; set; }       
 
-        public int ArticleID { get; set; }       
+        public int ArticleID { get; set; }
+
+        public string UserId { get; set; }
     }
 }

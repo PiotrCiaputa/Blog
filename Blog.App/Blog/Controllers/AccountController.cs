@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Blog.Models;
 using Blog.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
     public class AccountController : Controller
     {
-        private SignInManager<IdentityUser> _signInManager;
-        private UserManager<IdentityUser> _userManager;
-        public AccountController(SignInManager<IdentityUser> signInManager,
-                                    UserManager<IdentityUser> userManager)
+        private SignInManager<User> _signInManager;
+        private UserManager<User> _userManager;
+        public AccountController(SignInManager<User> signInManager,
+                                    UserManager<User> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -40,7 +38,7 @@ namespace Blog.Controllers
 
             if (isAdmin)
             {
-                return RedirectToAction("Index", "Panel");
+                return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction("Index", "Home");
@@ -60,7 +58,7 @@ namespace Blog.Controllers
                 return View(model);
             }
 
-            var user = new IdentityUser
+            var user = new User
             {
                 UserName = model.UserName
             };
