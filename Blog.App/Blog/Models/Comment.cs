@@ -13,5 +13,7 @@ namespace Blog.Models
 
         public string UserId { get; set; }
         public User User { get; set; }
+
+        public string Username { get; set; }
     }
 }

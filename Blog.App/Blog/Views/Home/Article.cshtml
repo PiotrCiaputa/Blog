@@ -69,12 +69,9 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                     <div class="comment-section">
-                        
-                            <span class="text-primary"></span>
-
-                        
                         @foreach (var item in Model.Article.Comments)
                         {
+                            <span class="text-primary">@item.Username</span>
                             <p class="comment-message"> @item.Message --- <strong>Dodano: </strong><span class="text-danger">@item.Created</span></p>
                         }
 

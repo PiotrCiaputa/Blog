@@ -16,7 +16,7 @@ namespace Blog.Controllers
         private readonly IArticleRepository _articleRepository;
         private readonly ICategoryRepository _categoryRepository;        
         private readonly IFileManager _fileManager;
-        private UserManager<User> _userManager;
+        private readonly UserManager<User> _userManager;
 
         public HomeController(IArticleRepository articleRepository,
                               ICategoryRepository categoryRepository,
@@ -63,8 +63,8 @@ namespace Blog.Controllers
             {
                 Article = _articleRepository.GetArticle(id),
                 Categories = _categoryRepository.GetAllCategories(),
-                Articles = _articleRepository.GetAllArticles()                
-            };
+                Articles = _articleRepository.GetAllArticles()          
+        };
            
             return View(model);
         }
@@ -87,6 +87,7 @@ namespace Blog.Controllers
             var article = _articleRepository.GetArticle(model.ArticleID);
 
             model.UserId = _userManager.GetUserId(HttpContext.User);
+            model.UserName = _userManager.GetUserName(HttpContext.User);
             
             article.Comments = article.Comments ?? new List<Comment>();
 
@@ -94,7 +95,8 @@ namespace Blog.Controllers
             {            
                 Message = model.Message,
                 Created = DateTime.Now,
-                UserId = model.UserId                
+                UserId = model.UserId,
+                Username = model.UserName
             });
 
             _articleRepository.UpdateArticle(article);            
