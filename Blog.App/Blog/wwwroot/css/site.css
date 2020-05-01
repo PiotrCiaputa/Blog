@@ -164,5 +164,25 @@ a:hover {
     font-weight: 700;
 }
 
+/** Contact **/
+.contact-title {
+    font-weight: 700;
+    padding-bottom: 2rem;
+}
+
+address {
+    font-size: 1.3rem;
+}
+
+/** About **/
+.about {
+    font-weight: 700;
+    padding-bottom: 3rem;
+}
+
+.about-paragraph {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
 
 
