@@ -1,16 +1,16 @@
 ﻿@model CommentViewModel
 
-@{ 
+@{
 
 }
 
 <div class="text-center message-form">
     <h4 class="text-uppercase">Dodaj komentarz</h4>
-    <form asp-controller="Home" asp-action="Comment" method="post">
-        <input asp-for="ArticleID" type="hidden"/>
-        <input asp-for="ID" type="hidden"/>        
-        <input asp-for="UserId" type="hidden"/>        
+    <form id="CommentForm" asp-controller="Home" asp-action="Comment" method="post">
+        <input asp-for="ArticleID" type="hidden" />
+        <input asp-for="ID" type="hidden" />
+        <input asp-for="UserId" type="hidden" />
         <textarea asp-for="Message" cols="40" rows="5"></textarea><br />
-        <button type="submit" class="btn btn-warning text-uppercase comment-button">Dodaj</button>
+        <button type="submit" id="Save" class="btn btn-warning text-uppercase comment-button">Dodaj</button>
     </form>
 </div>

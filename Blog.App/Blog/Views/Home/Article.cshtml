@@ -68,17 +68,20 @@
                 <div class="col-lg-8 col-md-8">
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <div class="comment-section">
-                        @foreach (var item in Model.Article.Comments)
-                        {
-                            <span class="text-primary">@item.Username</span>
-                            <p class="comment-message"> @item.Message --- <strong>Dodano: </strong><span class="text-danger">@item.Created</span></p>
-                        }
+                        <div class="comment-section" id="comment-message">
+                            @foreach (var item in Model.Article.Comments)
+                            {
+                            <div id="message">
 
-                        @{
-                            await Html.RenderPartialAsync("_CommentPartialView", new CommentViewModel { ArticleID = Model.Article.ID });
-                        }
-                    </div>
+
+                                <p><span class="text-primary">@item.Username</span> @item.Message --- <strong>Dodano: </strong><span class="text-danger">@item.Created</span></p>
+                            </div>
+                            }
+
+                            @{
+                                await Html.RenderPartialAsync("_CommentPartialView", new CommentViewModel { ArticleID = Model.Article.ID });
+                            }
+                        </div>
                     }
                     else
                     {
@@ -96,7 +99,25 @@
         © 2020 Copyright
     </div>
 </footer>
+@*@section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script>
+        $(function () {
+            $('#Save').click(function (e) {
+                e.PreventDefault();
 
+                var form = $('#CommentForm');
+                var url = form.attr("action");
+                var formData = form.serialize();
+
+                $.post(url, formData, function (data) {
+                    $('#message').html(data);
+                });
+            });
+        });
+    </script>
+}*@
 
 
 
