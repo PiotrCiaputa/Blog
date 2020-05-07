@@ -6,20 +6,20 @@
 
 <div container>
     <div class="row">
-        <div class="col-lg-8 col-md-4">
+        <div class="col-lg delete-article">
             <h2 class="text-center text-uppercase"><strong>Usuń artykuł</strong></h2>
             <br />
-            <p class="text-center">Czy chcesz usunąć artykuł?</p>
-            <form asp-controller="Panel" asp-action="RemoveConfirmed" method="post">
+            <p class="text-center delete-article-question">Czy chcesz usunąć artykuł?</p>
+            <form asp-controller="Panel" asp-action="RemoveConfirmed" method="post" class="delete-article-form">
                 <input class="form-control text-center" asp-for="Title" />
                 <span asp-validation-for="Title"></span>
                 <div class="text-center">
-                    <input class="btn btn-primary" asp-controller="Panel" asp-action="RemoveConfirmed" asp-route-id="@Model.ID" type="submit" value="Tak" />
-                    <input class="btn btn-primary" asp-controller="Panel" asp-action="Index" type="submit" value="Nie" />
+                    <input class="btn btn-danger delete-button" asp-controller="Panel" asp-action="RemoveConfirmed" asp-route-id="@Model.ID" type="submit" value="Tak" />
+                    <input class="btn btn-danger delete-button" asp-controller="Panel" asp-action="Index" type="submit" value="Nie" />
                 </div>
             </form>
             <div>
-                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase">Powrót do strony index</a>
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase button-return-look">Powrót do strony index</a>
             </div>
         </div>
     </div>

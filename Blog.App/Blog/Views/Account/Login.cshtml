@@ -6,15 +6,15 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg">
+        <div class="col-lg delete-article">
             <h1 class="text-center text-uppercase"><strong>Zaloguj się</strong></h1>
             <form asp-controller="Account" asp-action="Login" method="post">
                 <div class="text-center">
                     <label>Nazwa użytkownika</label><br />
-                    <input asp-for="UserName" /><br />
+                    <input class="input" asp-for="UserName" /><br />
                     <label>Hasło</label><br />
-                    <input asp-for="Password" /><br /><br />
-                    <input type="submit" value="Zaloguj się" class="btn btn-primary text-uppercase" />
+                    <input class="input" asp-for="Password" /><br /><br />
+                    <input type="submit" value="Zaloguj się" class="btn btn-warning text-uppercase" />
                     <a asp-controller="Account" asp-action="Register">Zarejestruj się</a>
                 </div>
             </form>

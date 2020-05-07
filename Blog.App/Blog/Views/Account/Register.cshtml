@@ -5,20 +5,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg">
+        <div class="col-lg delete-article">
             <h1 class="text-center text-uppercase"><strong>Zarejestruj się</strong></h1>
             <form asp-controller="Account" asp-action="Register" method="post">
                 <div class="text-center">
                     <label>Nazwa użytkownika</label><br />
-                    <input asp-for="UserName" /><br />
+                    <input class="input" asp-for="UserName" /><br />
                     <span asp-validation-for="UserName"></span>
                     <label>Hasło</label><br />
-                    <input asp-for="Password" /><br /><br />
+                    <input class="input" asp-for="Password" /><br /><br />
                     <span asp-validation-for="Password"></span>
                     <label>Potwierdź Hasło</label><br />
-                    <input asp-for="ConfirmPassword" /><br /><br />
+                    <input class="input" asp-for="ConfirmPassword" /><br /><br />
                     <span asp-validation-for="ConfirmPassword"></span>
-                    <input type="submit" value="Zarejestruj się" class="btn btn-primary text-uppercase" />
+                    <input type="submit" value="Zarejestruj się" class="btn btn-warning text-uppercase" />
                 </div>
             </form>
         </div>

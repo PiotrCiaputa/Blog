@@ -2,33 +2,33 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg">
-            <h1 class="text-center text-uppercase"><strong>Admin Panel</strong></h1>
-            <a asp-controller="Panel" asp-action="Add" class="btn btn-primary">Dodaj artykuł</a>
-            <a asp-controller="Panel" asp-action="AddCategory" class="btn btn-primary">Dodaj kategorię</a>
-            <a asp-controller="Panel" asp-action="List" class="btn btn-primary">Lista kategorii</a>
-            <br />
+        <div class="col-lg admin-panel">
+            <h1 class="text-center text-uppercase panel-index-header"><strong>Admin Panel</strong></h1><br />
+            <a asp-controller="Panel" asp-action="Add" class="btn btn-warning delete-button">Dodaj artykuł</a>
+            <a asp-controller="Panel" asp-action="AddCategory" class="btn btn-warning panel-add-category delete-button">Dodaj kategorię</a>
+            <a asp-controller="Panel" asp-action="List" class="btn btn-warning delete-button">Lista kategorii</a>
+            <br /><br />
             <table>
                 <thead>
                     <tr>
-                        <th class="text-uppercase">Bieżące artykuły</th>
+                        <th class="text-uppercase current-articles-header">Bieżące artykuły</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var article in Model)
                     {
                         <tr>
-                            <td>@article.Title</td>
-                            <td><a asp-controller="Panel" asp-action="Edit" asp-route-id="@article.ID" class="btn btn-primary">
+                            <td class="panel-article-title">@article.Title</td>
+                            <td class="edit-button"><a asp-controller="Panel" asp-action="Edit" asp-route-id="@article.ID" class="btn btn-danger edit-button-look">
                                 Edytuj
                             </a></td>
-                            <td><a asp-controller="Panel" asp-action="Remove" asp-route-id="@article.ID" class="btn btn-primary">
+                            <td class="delete-button"><a asp-controller="Panel" asp-action="Remove" asp-route-id="@article.ID" class="btn btn-danger delete-button-look">
                                 Usuń
                             </a></td>
                         </tr>
                     }
                 </tbody>
-            </table>
+            </table><br /><br /><br />
         </div>
     </div>
 </div>

@@ -189,4 +189,105 @@ address {
     line-height: 1.6;
 }
 
+/* Admin Panel */
+.admin-panel {
+    padding-top: 2rem;
+}
+
+.current-articles-header {
+    font-size: 1.5rem;
+}
+
+.edit-button {
+    padding-left: 3rem;
+}
+
+.edit-button-look {
+    padding: .5rem 2rem;
+}
+
+.delete-button-look {
+    padding: .5rem 2rem;
+}
+
+.panel-article-title {
+    font-size: 1.1rem;
+}
+
+.panel-add-category {
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+
+/* Admin Panel Category List */
+.category-list-header {
+    margin-top: 2rem;
+    margin-bottom: 1.8rem;
+}
+
+.category-return-button {
+    margin-bottom: 1.5rem;    
+}
+
+.button-return-look {
+    padding: .8rem 2rem;
+}
+
+.category-titles-header {
+    font-size: 1.5rem;
+    padding-bottom: 1.2rem;
+}
+
+.category-item {
+    font-size: 1.1rem;
+}
+
+/* Admin Panel Delete Category */
+.delete-category {
+    margin: 2rem 0;
+}
+
+.delete-category-question {
+    font-size: 1.5rem;
+}
+
+.delete-category-form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.delete-button {
+    margin-top: 1rem;
+    padding: .5rem 3rem;
+}
+
+/* Admin Panel Add Category */
+.add-category {
+    margin: 2rem 0;
+}
+
+.add-category-form {
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    width: 50%;
+}
+
+/* Admin Panel Delete Article */
+.delete-article {
+    margin: 2rem 0;
+}
+
+.delete-article-question {
+    font-size: 1.5rem;
+}
+
+.delete-article-form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+/* Account */
+.input {
+    padding: .3rem 0;
+}
 

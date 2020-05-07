@@ -7,28 +7,28 @@
 <div class="container">
     <div class="row">
         <div col-lg>
-            <h2 class="text-center text-uppercase"><strong>Bieżące kategorie</strong></h2>
-            <div>
-                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase">Powrót do strony index</a>
+            <h2 class="text-center text-uppercase category-list-header"><strong>Bieżące kategorie</strong></h2>
+            <div class="category-return-button">
+                <a asp-controller="Panel" asp-action="Index" class="btn btn-warning text-center text-uppercase button-return-look">Powrót do strony index</a>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Nazwa kategorii</th>
+                        <th class="category-titles-header text-uppercase">Nazwa kategorii</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var category in Model)
                     {
                         <tr>
-                            <td>@category.Name</td>
-                            <td><a asp-controller="Panel" asp-action="EditCategory" asp-route-id="@category.ID" class="btn btn-primary">Edytuj</a></td>
-                            <td><a asp-controller="Panel" asp-action="DeleteCategory" asp-route-id="@category.ID" class="btn btn-primary">Usuń</a></td>
+                            <td class="category-item">@category.Name</td>
+                            <td class="edit-button"><a asp-controller="Panel" asp-action="EditCategory" asp-route-id="@category.ID" class="btn btn-danger edit-button-look">Edytuj</a></td>
+                            <td class="delete-button"><a asp-controller="Panel" asp-action="DeleteCategory" asp-route-id="@category.ID" class="btn btn-danger delete-button-look">Usuń</a></td>
                         </tr>
 
                     }
                 </tbody>
-            </table>
+            </table><br /><br /><br />
         </div>
     </div>
 </div>

@@ -6,20 +6,20 @@
 
 <div container>
     <div class="row">
-        <div class="col-lg-8 col-md-4">
+        <div class="col-lg delete-category">
             <h2 class="text-center text-uppercase"><strong>Usuń kategorię</strong></h2>
             <br />
-            <p class="text-center">Czy chcesz usunąć kategorię?</p>
-            <form asp-controller="Panel" asp-action="DeleteConfirmed" method="post">
+            <p class="text-center delete-category-question">Czy chcesz usunąć kategorię?</p>
+            <form asp-controller="Panel" asp-action="DeleteConfirmed" method="post" class="delete-category-form">
                 <input class="form-control text-center" asp-for="Name" />
-                <span asp-validation-for="Name"></span>
+                <span asp-validation-for="Name"></span>  
                 <div class="text-center">
-                    <input class="btn btn-primary" asp-controller="Panel" asp-action="DeleteConfirmed" asp-route-id="@Model.ID" type="submit" value="Tak" />
-                    <input class="btn btn-primary" asp-controller="Panel" asp-action="List" type="submit" value="Nie" />
+                    <input class="btn btn-danger delete-button" asp-controller="Panel" asp-action="DeleteConfirmed" asp-route-id="@Model.ID" type="submit" value="Tak" />
+                    <input class="btn btn-danger delete-button" asp-controller="Panel" asp-action="List" type="submit" value="Nie" />   
                 </div>
             </form>
             <div>
-                <a asp-controller="Panel" asp-action="List" class="btn btn-warning text-center text-uppercase">Powrót do listy kategorii</a>
+                <a asp-controller="Panel" asp-action="List" class="btn btn-warning text-center text-uppercase button-return-look">Powrót do listy kategorii</a>
             </div>
         </div>
     </div>
