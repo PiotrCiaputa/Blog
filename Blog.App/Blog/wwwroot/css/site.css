@@ -179,7 +179,7 @@ address {
 }
 
 /** About **/
-.about {
+.about-title {
     font-weight: 700;
     padding-bottom: 3rem;
 }
@@ -284,6 +284,31 @@ address {
 .delete-article-form {
     margin: 0 auto;
     width: 50%;
+}
+
+/* Admin Panel Add Article */
+.add-article {
+    margin: 2rem 0;
+}
+
+.add-article-form {
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+/* Admin Panel Add Article */
+.edit-article {
+    margin: 2rem 0;
+}
+
+.edit-article-form {
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+.choose-category {
+    font-weight: 700;
+    padding-right: 1rem;
 }
 
 /* Account */

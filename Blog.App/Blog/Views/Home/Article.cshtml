@@ -99,10 +99,16 @@
         © 2020 Copyright
     </div>
 </footer>
-@*@section scripts{
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+@section scripts{
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script>
+        $('textarea').trumbowyg({
+            prefix: 'custom-prefix'
+        });
+    </script>*@
+    
+    @*<script>
         $(function () {
             $('#Save').click(function (e) {
                 e.PreventDefault();
@@ -116,8 +122,8 @@
                 });
             });
         });
-    </script>
-}*@
+    </script>*@
+}
 
 
 
