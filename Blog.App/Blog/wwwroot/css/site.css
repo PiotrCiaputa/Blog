@@ -144,7 +144,15 @@ a:hover {
     font-size: 1rem;
     line-height: 1.6;
     justify-content: flex-start;
-    padding-top: 2rem;    
+    padding-top: 2rem;  
+}
+
+.text p {
+    padding-left: 2rem;
+    padding-right: 1rem;
+    text-align: justify;
+    line-height: unset;
+    font-size: 1.2rem;
 }
 
 /** Comment **/
@@ -182,18 +190,13 @@ a:hover {
 }
 
 address {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 /** About **/
 .about-title {
     font-weight: 700;
-    padding-bottom: 3rem;
-}
-
-.about-paragraph {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    padding-bottom: 2rem;
 }
 
 /* Admin Panel */
