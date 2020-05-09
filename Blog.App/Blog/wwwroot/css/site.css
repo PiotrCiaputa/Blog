@@ -95,22 +95,29 @@ a:hover {
     margin-top: 2rem;
 }
 
+.pagination li {
+    padding: 0 .6rem;
+}
+
 .pagination-content {
-    list-style-type: none;    
+    list-style-type: none;  
+    
 }
 
 .pagination-item {
     font-size: 1.5rem;
-    letter-spacing: 1rem; 
     background-color: yellow;
+    
 }
 
 .pagination-item pagination-one-item:hover:not(.active) {
     background-color: #4CAF50;
+    
 }
 
 .active {
     background-color: #4CAF50;
+    padding: 0 2rem;
 }
 
 /** Footer **/
