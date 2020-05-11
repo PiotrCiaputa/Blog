@@ -157,8 +157,13 @@ a:hover {
 }
 
 /** Comment **/
+.comment {
+    padding-left: 2rem;
+    padding-top: 5rem;
+}
+
 .message-form {
-    padding-top: 3rem;
+    padding-top: 5rem;
 }
 
 .comment-blocked {
@@ -168,6 +173,11 @@ a:hover {
 
 .comment-header {
     font-weight: 700;
+    padding-bottom: .7rem;
+}
+
+.comment-log {
+    padding-top: 5rem;
 }
 
 .comment-message {    
@@ -175,13 +185,18 @@ a:hover {
     padding-bottom: 1rem;
 }
 
+.c-button {
+    padding-top: .5rem;
+}
+
 .comment-button {
-    padding: .3rem 2rem;
+    padding: .5rem 4rem;
     font-weight: 700;
 }
 
 .comment-section {
-    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-top: 5rem;
 }
 
 /** Contact **/
