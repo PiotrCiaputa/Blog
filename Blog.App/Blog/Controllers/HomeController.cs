@@ -32,17 +32,17 @@ namespace Blog.Controllers
         {
             var pageNumber = page ?? 1;
 
-            HomeViewModel model;
+            HomeViewModel model;           
 
             if (category == 0)
-            {
-
+            {             
+               
                 model = new HomeViewModel()
                 {
                     Articles = _articleRepository.GetAllArticles(search).ToPagedList(pageNumber, 3),
                     AllArticles = _articleRepository.GetAllArticles(),
                     Categories = _categoryRepository.GetAllCategories()
-                };
+                };                             
             }            
             else
             {

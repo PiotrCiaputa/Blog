@@ -1,10 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Models
 {
     public class Comment
     {
-        public int ID { get; set; }
+        public int ID { get; set; }       
+        
         public string Message { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
 
